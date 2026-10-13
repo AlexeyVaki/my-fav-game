@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 500,
+    height: 600,
     borderRadius: 12,
     marginBottom: 24,
     backgroundColor: '#172B46',
