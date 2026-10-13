@@ -1,13 +1,17 @@
-import { Tabs } from 'expo-router';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
-
+import { Tabs } from 'expo-router';
+import { useState } from 'react';
+import { Pressable } from 'react-native';
 
 export default function TabLayout() {
+  const [showTabs, setShowTabs] = useState(false);
+
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#ffd33d',
+        tabBarInactiveTintColor: '#616060',
         headerStyle: {
           backgroundColor: '#25292e',
         },
@@ -15,7 +19,20 @@ export default function TabLayout() {
         headerTintColor: '#fff',
         tabBarStyle: {
           backgroundColor: '#25292e',
+          display: showTabs ? 'flex' : 'none',
         },
+        headerRight: () => (
+          <Pressable
+            onPress={() => setShowTabs(!showTabs)}
+            style={{ marginRight: 16 }}
+          >
+            <Ionicons
+              name={showTabs ? 'menu' : 'menu-outline'}
+              size={26}
+              color="#fff"
+            />
+          </Pressable>
+        ),
       }}
     >
       <Tabs.Screen
@@ -32,7 +49,7 @@ export default function TabLayout() {
         options={{
           title: 'More Information',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'id-card' : 'id-card-outline'} color={color} size={24}/>
+            <Ionicons name={focused ? 'id-card' : 'id-card-outline'} color={color} size={24} />
           ),
         }}
       />
@@ -41,7 +58,7 @@ export default function TabLayout() {
         options={{
           title: 'About',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24}/>
+            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24} />
           ),
         }}
       />
