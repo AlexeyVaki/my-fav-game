@@ -28,6 +28,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="more-inf"
+        options={{
+          title: 'More Information',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'id-card' : 'id-card-outline'} color={color} size={24}/>
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="about"
         options={{
           title: 'About',
